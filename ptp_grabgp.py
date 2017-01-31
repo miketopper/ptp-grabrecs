@@ -12,7 +12,7 @@ watchdir = '/home/mike/rwatch/'  ##path to rtorrent watch directory
 os.system('curl -s -b ' + cookie_file + ' -o ptp_gp.html "' + url + '"')
 
 
-goldenpage = urllib.urlopen("your path ").read()
+goldenpage = urllib.urlopen("ptp_gp.html").read()
 document, errors = tidy_document(goldenpage)
 
 goldenpage_pq = pq(document)

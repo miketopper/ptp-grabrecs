@@ -1,7 +1,7 @@
 import os
 from pyquery import PyQuery as pq
 
-cookie_file = '~/cookies.txt'
+cookie_file = '/home/mike/cookies.txt'
 url = 'https://passthepopcorn.me/'
 searchstring = 'x264 / MKV'
 watchdir = '/home/mike/rwatch/'

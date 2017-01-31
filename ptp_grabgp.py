@@ -10,6 +10,7 @@ watchdir = '/home/mike/rwatch/'  ##path to rtorrent watch directory
 os.system('curl -s -b ' + cookie_file + ' -o ptp_gp.html "' + url + '"')
 
 goldenpage = pq(filename='ptp_gp.html')
+print goldenpage.text();
 
 for possible_torrent in goldenpage('a.torrent-info-link'):
     dl_link = site + possible_torrent.attrib['href']

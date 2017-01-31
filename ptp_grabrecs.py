@@ -25,7 +25,6 @@ for userrec in homepage('div.user-recommendation a.l_movie'):
         pass
 	
     if(possible_torrent):
-        print "** Grabbing " + possible_torrent('a.torrent-info-link').text()
 
         if(not possible_torrent('a.torrent-info-link span.torrent-info__download-modifier--free')):
             continue

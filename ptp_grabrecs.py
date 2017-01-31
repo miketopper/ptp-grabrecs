@@ -1,10 +1,12 @@
 import os
 from pyquery import PyQuery as pq
 
-cookie_file = '/home/mike/cookies.txt'
 url = 'https://passthepopcorn.me/'
-searchstring = 'x264 / MKV'
-watchdir = '/home/mike/rwatch/'
+
+
+cookie_file = '/home/mike/cookies.txt'  ##path to cookie file with PTP logged in cookies
+searchstring = 'x264 / MKV'  ## string to search on the torrent page
+watchdir = '/home/mike/rwatch/'  ##path to rtorrent watch directory
 
 os.system('curl -s -b ' + cookie_file + ' -o ptp_homepage.html ' + url)
 

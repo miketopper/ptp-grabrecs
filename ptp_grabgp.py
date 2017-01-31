@@ -11,7 +11,7 @@ os.system('curl -s -b ' + cookie_file + ' -o ptp_gp.html "' + url + '"')
 
 goldenpage = pq(filename='ptp_gp.html')
 
-for possible_torrent in goldenpage('a.torrent-info-link:has(span.torrent-info__download-modifier--free)'):
+for possible_torrent in goldenpage('a.torrent-info-link').has('span.torrent-info__download-modifier--free'):
     dl_link = site + possible_torrent.attrib['href']
     print "possible freeleach torrent link: " +  dl_link
 

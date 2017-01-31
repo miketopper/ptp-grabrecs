@@ -7,7 +7,7 @@ site = 'https://passthepopcorn.me/'
 cookie_file = '/home/mike/cookies.txt'  ##path to cookie file with PTP logged in cookies
 watchdir = '/home/mike/rwatch/'  ##path to rtorrent watch directory
 
-os.system('curl -s -b ' + cookie_file + ' -o ptp_homepage.html ' + url)
+os.system('curl -s -b ' + cookie_file + ' -o ptp_gp.html ' + url)
 
 goldenpage = pq(filename='ptp_gp.html')
 

@@ -25,11 +25,13 @@ for movie in movies['Movies']:
             possible_torrent = pq(movie['GroupingQualities'][0]['Torrents'][0]['Title'])
             if(possible_torrent('a.torrent-info-link--user-downloaded')):
                 print "already downloaded!"
+                continue
             if(possible_torrent('a.torrent-info-link--user-seeding')):
                 print "already seeding!"
+                continue
 
             print "** Grabbing " + possible_torrent('a.torrent-info-link').text()
-            dl_link = possible_torrent('span.basic-movie-list__torrent__action a[title="Download"]')[0].attrib['href']
+            dl_link = possible_torrent('a.torrent-info-link')[0].attrib['href']
             print "** Download link: " + dl_link
             #dl_url = url + dl_link
             #os.system('cd ' + watchdir + ' ; curl -s -b ' + cookie_file + ' -O -J ' + '"'+dl_url+'"')

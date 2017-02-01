@@ -23,10 +23,10 @@ for movie in movies['Movies']:
             print movie['Title'] + " IS FREELEECH!"
             possible_torrent = pq(movie['GroupingQualities'][0]['Torrents'][0]['Title'])
             if(possible_torrent('a.torrent-info-link--user-downloaded')):
-                print "already downloaded!"
+                print "** already downloaded!"
                 continue
             if(possible_torrent('a.torrent-info-link--user-seeding')):
-                print "already seeding!"
+                print "** already seeding!"
                 continue
 
             print "** Grabbing " + possible_torrent('a.torrent-info-link').text()

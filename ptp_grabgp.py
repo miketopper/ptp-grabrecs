@@ -8,9 +8,9 @@ site = 'https://passthepopcorn.me/'
 cookie_file = '/home/mike/cookies.txt'  ##path to cookie file with PTP logged in cookies
 watchdir = '/home/mike/rwatch/'  ##path to rtorrent watch directory
 
-os.system('curl -s -b ' + cookie_file + ' -o ptp_gp.html "' + url + '"')
+gp_html = os.popen('curl -s -b ' + cookie_file + ' -o ptp_gp.html "' + url + '"').read()()
 
-goldenpage = pq(filename='ptp_gp.html')
+goldenpage = pq(gp_html)
 
 
 regex = r"{(.*)}"

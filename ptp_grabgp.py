@@ -18,14 +18,15 @@ movies = json.loads(re.search(regex,goldenpage('script:contains("SetViewMode")')
 #moviesJson = re.search(regex,goldenpage('script:contains("SetViewMode")').html(),re.MULTILINE).group(0)
 
 for movie in movies['Movies']:
-    print movie['Title']
+    #print "looking at: " + movie['Title']
+    if(movie['GroupingQualities'][0]['Torrents'][0]['Freeleech']):
+        print movie['Title'] + " IS FREELEECH!"
+        possible_torrent = pq(movie['GroupingQualities'][0]['Torrents'][0]['Title'])
 
 
 
-for possible_torrent in goldenpage('a.torrent-info-link'):
-    print 'here'
-    dl_link = site + possible_torrent.attrib['href']
-    print "possible freeleach torrent link: " +  dl_link
+
+
 
     # if(possible_torrent):
     #

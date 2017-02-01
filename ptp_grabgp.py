@@ -34,7 +34,7 @@ for movie in movies['Movies']:
             torrent_id = movie['GroupingQualities'][0]['Torrents'][0]['TorrentId']
             auth_key = movies['AuthKey']
             torrent_pass = movies['TorrentPass']
-            dl_url = site + "torrents.php?action=download&id="+torrent_id+"&authkey="+auth_key+"&torrent_pass="+torrent_pass
+            dl_url = site + "torrents.php?action=download&id="+str(torrent_id)+"&authkey="+auth_key+"&torrent_pass="+torrent_pass
             print "** Download link: " + dl_url
             os.system('cd ' + watchdir + ' ; curl -s -b ' + cookie_file + ' -O -J ' + '"'+dl_url+'"')
     except KeyError:

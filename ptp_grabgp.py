@@ -20,16 +20,16 @@ movies = json.loads(re.search(regex,goldenpage('script:contains("SetViewMode")')
 for movie in movies['Movies']:
     try:
         if(movie['GroupingQualities'][0]['Torrents'][0]['Freeleech']):
-            print movie['Title'] + " IS FREELEECH!"
+            #print movie['Title'] + " IS FREELEECH!"
             possible_torrent = pq(movie['GroupingQualities'][0]['Torrents'][0]['Title'])
             if(possible_torrent('a.torrent-info-link--user-downloaded')):
-                print "** already downloaded!"
+                #print "** already downloaded!"
                 continue
             if(possible_torrent('a.torrent-info-link--user-seeding')):
-                print "** already seeding!"
+                #print "** already seeding!"
                 continue
 
-            print "** Grabbing " + possible_torrent('a.torrent-info-link').text()
+            print "** Grabbing " + movie['Title'] + " - " + possible_torrent('a.torrent-info-link').text()
             torrent_id = movie['GroupingQualities'][0]['Torrents'][0]['TorrentId']
             auth_key = movies['AuthKey']
             torrent_pass = movies['TorrentPass']

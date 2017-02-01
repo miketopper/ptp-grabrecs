@@ -1,6 +1,5 @@
-import os, urllib
+import os, re, json
 from pyquery import PyQuery as pq
-from tidylib import tidy_document
 
 
 url = 'https://passthepopcorn.me/torrents.php?page=1&action=advanced&grouping=0&scene=2&order_by=gptime'
@@ -11,14 +10,16 @@ watchdir = '/home/mike/rwatch/'  ##path to rtorrent watch directory
 
 os.system('curl -s -b ' + cookie_file + ' -o ptp_gp.html "' + url + '"')
 
-
-goldenpage = urllib.urlopen("ptp_gp.html").read()
-document, errors = tidy_document(goldenpage)
-
-goldenpage_pq = pq(document)
+goldenpage = pq(filename='ptp_gp.html')
 
 
-for possible_torrent in goldenpage_pq('a.torrent-info-link'):
+regex = r"{(.*)}"
+#moviesJson = json.loads(re.search(regex,goldenpage('script:contains("SetViewMode")').html(),re.MULTILINE).group(0))
+moviesJson = re.search(regex,goldenpage('script:contains("SetViewMode")').html(),re.MULTILINE).group(0)
+print moviesJson;
+
+
+for possible_torrent in goldenpage('a.torrent-info-link'):
     print 'here'
     dl_link = site + possible_torrent.attrib['href']
     print "possible freeleach torrent link: " +  dl_link

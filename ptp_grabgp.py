@@ -19,9 +19,12 @@ movies = json.loads(re.search(regex,goldenpage('script:contains("SetViewMode")')
 
 for movie in movies['Movies']:
     #print "looking at: " + movie['Title']
-    if(movie['GroupingQualities'][0]['Torrents'][0]['Freeleech']):
-        print movie['Title'] + " IS FREELEECH!"
-        possible_torrent = pq(movie['GroupingQualities'][0]['Torrents'][0]['Title'])
+    try:
+        if(movie['GroupingQualities'][0]['Torrents'][0]['Freeleech']):
+            print movie['Title'] + " IS FREELEECH!"
+            possible_torrent = pq(movie['GroupingQualities'][0]['Torrents'][0]['Title'])
+    except KeyError:
+        continue
 
 
 

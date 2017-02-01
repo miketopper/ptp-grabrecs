@@ -14,9 +14,12 @@ goldenpage = pq(filename='ptp_gp.html')
 
 
 regex = r"{(.*)}"
-#moviesJson = json.loads(re.search(regex,goldenpage('script:contains("SetViewMode")').html(),re.MULTILINE).group(0))
-moviesJson = re.search(regex,goldenpage('script:contains("SetViewMode")').html(),re.MULTILINE).group(0)
-print moviesJson;
+movies = json.loads(re.search(regex,goldenpage('script:contains("SetViewMode")').html(),re.MULTILINE).group(0))
+#moviesJson = re.search(regex,goldenpage('script:contains("SetViewMode")').html(),re.MULTILINE).group(0)
+
+for movie in movies['Movies']:
+    print movie['Title']
+
 
 
 for possible_torrent in goldenpage('a.torrent-info-link'):

@@ -6,7 +6,7 @@ url = 'https://passthepopcorn.me/torrents.php?page=1&action=advanced&grouping=0&
 
 site = 'https://passthepopcorn.me/'
 cookie_file = '/home/mike/cookies.txt'  ##path to cookie file with PTP logged in cookies
-watchdir = '/home/mike/rwatch/'  ##path to rtorrent watch directory
+watchdir = '/home/mike/dwatch/'  ##path to rtorrent watch directory
 
 gp_html = os.popen('curl -s -b ' + cookie_file + '  "' + url + '"').read()
 

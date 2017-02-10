@@ -1,0 +1,4 @@
+[ptp]
+site = 'https://passthepopcorn.me/'
+cookie_file = '/Users/miketopper/cookies.txt'  ##path to cookie file with PTP logged in cookies
+watchdir = '/Users/miketopper/'  ##path to rtorrent watch directory

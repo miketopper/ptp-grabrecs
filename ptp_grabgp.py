@@ -13,8 +13,9 @@ gp_html = os.popen('curl -s -b ' + cookie_file + '  "' + url + '"').read()
 goldenpage = pq(gp_html)
 
 
-regex = r"{(.*)}"
-movies = json.loads(re.search(regex,goldenpage('script:contains("SetViewMode")').html(),re.MULTILINE).group(0))
+regex = r"PageData = ({.*})"
+matchresults = re.search(regex,goldenpage('script:contains("PageData")').html(),re.MULTILINE)
+movies = json.loads(matchresults.group(1))
 
 
 for movie in movies['Movies']:
